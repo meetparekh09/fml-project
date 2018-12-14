@@ -1,0 +1,33 @@
+Basic Model:
+    Select some most informative points. Strategies
+        1. Select points at random
+        2.
+    Label them
+    Train model on labeled point with notion of uncertainty(for e.g. points near the boundaries) or confidence
+    Then label rest of the points with good selection strategy:
+        1. Select points near the boundaries, as they have highest chances of altering the model:
+            suffers risk of biased selection which in no way relates with the underlying data distribution.
+        2.
+
+
+
+In active learning there is a risk of superbiased selection which in no way relates with the underlying data distribution.
+
+Three ways of managing sampling bias:
+    1. label all the samples
+    2. use informatance weighting
+    3. explicitly manage sampling regions
+
+
+
+Learner models:
+    1. Mellow Active Learner:
+        H <- set of hypothesis class
+        for every unbaled point:
+            if there is disagreement between hypothesis class H:
+                ask for label y, H <- {h for h in H, h(x) = y}
+
+        return H
+
+    2. Agnostic Active Learner:
+        Refer to slides, plus the 
