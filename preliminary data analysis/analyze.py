@@ -36,12 +36,12 @@ def getMonthNumber(mon):
     if mon == 'Dec' or mon == 'December':
         return 12
 
-filelist = os.listdir("../../"+companyName+"/The Wall Street Journal")
+filelist = os.listdir("../"+companyName+"/The Wall Street Journal")
 filelist.sort()
 for filename in filelist:
     if filename.endswith(".txt"):
         # print(os.path.join("../../Microsoft/The Wall Street Journal", filename))
-        filepath = os.path.join("../../"+companyName+"/The Wall Street Journal", filename)
+        filepath = os.path.join("../"+companyName+"/The Wall Street Journal", filename)
 
         startOfArticle = False
         bodyStart = False
@@ -209,7 +209,7 @@ def checkHeadlineCondition(line):
 # yearCount = {}
 # microsoftYearCount = {}
 
-filelist = os.listdir("../../"+companyName+"/The Wall Street Journal Factiva")
+filelist = os.listdir("../"+companyName+"/The Wall Street Journal Factiva")
 dateRegex = re.compile('[1-3]?[0-9] [a-zA-Z]* 20[0-1][0-9]')
 bodyStartRegex = re.compile('(Copyright [0-9]{4} Dow Jones & Company, Inc. All Rights Reserved.)|(Copyright \\(c\\) [0-9]{4}, Dow Jones & Company, Inc.)')
 filelist.sort()
@@ -217,7 +217,7 @@ for filename in filelist:
     fileString = ''
     if filename.endswith(".txt"):
         # print(os.path.join("../../Microsoft/The Wall Street Journal", filename))
-        filepath = os.path.join("../../"+companyName+"/The Wall Street Journal Factiva", filename)
+        filepath = os.path.join("../"+companyName+"/The Wall Street Journal Factiva", filename)
 
         with open(filepath) as file:
             for line in file:
@@ -321,12 +321,12 @@ writeFile.close()
 
 
 writeFile = open('./proquest-nytimes-merged-file.txt', 'w')
-filelist = os.listdir("../../"+companyName+"/The New York Times")
+filelist = os.listdir("../"+companyName+"/The New York Times")
 filelist.sort()
 for filename in filelist:
     if filename.endswith(".txt"):
         # print(os.path.join("../../Microsoft/The New York Times", filename))
-        filepath = os.path.join("../../"+companyName+"/The New York Times", filename)
+        filepath = os.path.join("../"+companyName+"/The New York Times", filename)
 
         startOfArticle = False
         bodyStart = False
