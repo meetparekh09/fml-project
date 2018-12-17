@@ -30,4 +30,16 @@ Learner models:
         return H
 
     2. Agnostic Active Learner:
-        Refer to slides, plus the 
+        Refer to slides, plus the
+
+
+
+Two tasks to perform:
+    1. primary subject: i.e. who is this article primarily about?
+    2. overall sentiment: i.e. negative, neutral and positive
+
+    First lets try Naive Bayes learner, with adjectives bag of words model. Initially for bootstraping, choose one article from each year about microsoft.
+    Tags in NLTK:
+    NN: Noun
+    JJ: Adjective
+    VB*: Verbs
