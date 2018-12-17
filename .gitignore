@@ -1,5 +1,4 @@
-.github/
-.vagrant/
+model1/data_obj
 
 # Local environment
 .DS_Store
