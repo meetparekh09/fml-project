@@ -9,14 +9,14 @@ import re
 
 # st = StanfordPOSTagger(model_filename=modelfile, path_to_jar=jarfile)
 
-filepath = "../preprocessing/microsoft-sentence-split-new.txt"
+filepath = "Tagged data.txt"
 # start_date = "1996-01-01"
 # end_date = "1996-12-31"
 
 date_regex = re.compile('\d{4}-\d{2}-\d{2}')
 
 data = []
-
+labeled_data_subject = []
 
 with open(filepath) as file:
     full_text = ""
@@ -29,6 +29,18 @@ with open(filepath) as file:
         if line == "\n":
             data.append((title, date, noun_list, adj_verb_list, full_text))
             print("writing :: " + date + ", " + title)
+            # file.readline()
+            subject = ""
+            line = file.readline()
+            if line[:-1] == 'Yes':
+                subject = '1'
+            else:
+                subject = '0'
+            labeled_data_subject.append((date, noun_list, subject))
+            # print(line[:-1])
+            line = file.readline()
+            print(line[:-1])
+            file.readline()
             title = ""
             date = ""
             noun_list = []
@@ -68,7 +80,11 @@ with open(filepath) as file:
                 if tag[1].startswith('JJ') or tag[1].startswith('VB'):
                     adj_verb_list.append(tag[0])
 
-print(data)
+print(labeled_data_subject)
+# print(data)
+#
+# with open('data_obj', 'wb') as fp:
+#     pickle.dump(data, fp)
 
-with open('data_obj', 'wb') as fp:
-    pickle.dump(data, fp)
+with open('labeled_data', 'wb') as fp:
+    pickle.dump(labeled_data_subject, fp)

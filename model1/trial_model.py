@@ -2,7 +2,7 @@ import pickle
 import random
 
 with open('data_obj', 'rb') as fp:
-    data = pickle.load(fp)
+    data_obj = pickle.load(fp)
 
 
 microsoft_data = []
