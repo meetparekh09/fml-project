@@ -1,5 +1,7 @@
-.github/
-.vagrant/
+model1/data_obj
+model1/labeled_data_subject
+model1/labeled_data_sentiment
+model1/sample_data
 
 # Local environment
 .DS_Store
