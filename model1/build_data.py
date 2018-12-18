@@ -1,6 +1,13 @@
 from nltk import pos_tag, word_tokenize
+from nltk.tag.stanford import StanfordPOSTagger
 import pickle
 import re
+
+# stanford_dir = '/Users/meetparekh/stanford-postagger-full-2018-10-16/'
+# modelfile = stanford_dir + 'models/wsj-0-18-caseless-left3words-distsim.tagger'
+# jarfile = stanford_dir + 'stanford-postagger-3.9.2.jar'
+
+# st = StanfordPOSTagger(model_filename=modelfile, path_to_jar=jarfile)
 
 filepath = "../preprocessing/microsoft-sentence-split-new.txt"
 # start_date = "1996-01-01"
@@ -43,10 +50,17 @@ with open(filepath) as file:
             # file.readline()
             # continue
         elif title == "":
-            title += line[:-1]
+            title += line[:-1].lower()
+            tokens = word_tokenize(title)
+            tags = pos_tag(tokens)
+            for tag in tags:
+                if tag[1].startswith('NN'):
+                    noun_list.append(tag[0])
+                if tag[1].startswith('JJ') or tag[1].startswith('VB'):
+                    adj_verb_list.append(tag[0])
         else:
-            full_text += line
-            tokens = word_tokenize(line)
+            full_text += line.lower()
+            tokens = word_tokenize(line.lower())
             tags = pos_tag(tokens)
             for tag in tags:
                 if tag[1].startswith('NN'):
